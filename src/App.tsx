@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import TrackOrder from "./pages/TrackOrder";
+import OrderStatus from "./pages/OrderStatus";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
