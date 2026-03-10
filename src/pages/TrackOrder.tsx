@@ -22,7 +22,7 @@ const TrackOrder = () => {
   const handleTrack = (e: React.FormEvent) => {
     e.preventDefault();
     if (orderId.trim() && email.trim()) {
-      setTracked(true);
+      window.open(`/order-status?orderid=${encodeURIComponent(orderId.trim())}`, "_blank");
     }
   };
 
