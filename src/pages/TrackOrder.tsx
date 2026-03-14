@@ -62,7 +62,7 @@ const TrackOrder = () => {
                 {/* Progress line */}
                 <div className="absolute top-6 left-6 right-6 h-0.5 bg-border" />
                 <div
-                  className="absolute top-6 left-6 h-0.5 gradient-primary transition-all duration-500"
+                  className="absolute top-6 left-6 h-0.5 bg-green-500 transition-all duration-500"
                   style={{ width: `${(statusIndex / (statusSteps.length - 1)) * 100}%`, maxWidth: "calc(100% - 48px)" }}
                 />
 
@@ -70,7 +70,7 @@ const TrackOrder = () => {
                   const isActive = i <= statusIndex;
                   return (
                     <div key={step.status} className="relative z-10 flex flex-col items-center gap-2">
-                      <div className={`h-12 w-12 rounded-full flex items-center justify-center transition-colors ${isActive ? "gradient-primary" : "bg-muted"}`}>
+                      <div className={`h-12 w-12 rounded-full flex items-center justify-center transition-colors ${isActive ? "bg-green-500" : "bg-muted"}`}>
                         <step.icon className={`h-5 w-5 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
                       </div>
                       <span className={`text-xs font-medium ${isActive ? "text-foreground" : "text-muted-foreground"}`}>{step.label}</span>
