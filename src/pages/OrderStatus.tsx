@@ -150,7 +150,7 @@ const OrderStatus = () => {
                         <div key={step.status} className="flex flex-col items-center gap-2 flex-1">
                           <div
                             className={`h-11 w-11 rounded-full flex items-center justify-center transition-colors ${
-                              isActive ? "gradient-primary" : "bg-muted"
+                              isActive ? "bg-green-500" : "bg-muted"
                             }`}
                           >
                             <step.icon className={`h-5 w-5 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
