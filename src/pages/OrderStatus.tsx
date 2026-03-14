@@ -141,7 +141,7 @@ const OrderStatus = () => {
                   <CardTitle className="font-display text-xl">Delivery Progress</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <Progress value={progressPercent} className="h-2" />
+                  <Progress value={progressPercent} className="h-2 [&>div]:bg-green-500" />
 
                   <div className="flex items-center justify-between">
                     {statusSteps.map((step, i) => {
@@ -177,8 +177,8 @@ const OrderStatus = () => {
                         <span
                           className={`absolute -left-[9px] h-4 w-4 rounded-full border-2 ${
                             event.completed
-                              ? "gradient-primary border-primary"
-                              : "bg-muted border-border"
+                           ? "bg-green-500 border-green-500"
+                           : "bg-muted border-border"
                           }`}
                         />
                         <p className={`text-sm font-semibold ${event.completed ? "text-foreground" : "text-muted-foreground"}`}>
