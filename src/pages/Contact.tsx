@@ -34,17 +34,17 @@ const Contact = () => {
             <div>
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">Get in Touch</h2>
               <div className="space-y-5 mb-8">
-                <a href="mailto:info@curoxyl.com" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
+                <a href="mailto:curoxylglobalhealthcorp@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
                   <div className="h-10 w-10 rounded-lg bg-accent flex items-center justify-center">
                     <Mail className="h-5 w-5 text-accent-foreground" />
                   </div>
-                  info@curoxyl.com
+                   curoxylglobalhealthcorp@gmail.com
                 </a>
-                <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
+                <a href="tel:+918618381858" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
                   <div className="h-10 w-10 rounded-lg bg-accent flex items-center justify-center">
                     <Phone className="h-5 w-5 text-accent-foreground" />
                   </div>
-                  +91 XXXXX XXXXX
+                  +91 86183 81858
                 </a>
               </div>
 
