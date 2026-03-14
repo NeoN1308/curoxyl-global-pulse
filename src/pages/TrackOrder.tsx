@@ -20,11 +20,11 @@ const TrackOrder = () => {
   const [currentStatus] = useState<Status>("In Transit");
 
   const handleTrack = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (orderId.trim() && email.trim()) {
-      window.open(`/order-status?orderid=${encodeURIComponent(orderId.trim())}`, "_blank");
-    }
-  };
+  e.preventDefault();
+  if (orderId.trim() && email.trim()) {
+    setTracked(true);
+  }
+}; 
 
   const statusIndex = statusSteps.findIndex((s) => s.status === currentStatus);
 
