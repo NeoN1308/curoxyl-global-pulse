@@ -21,7 +21,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-2">
           <HeartPulse className="h-7 w-7 text-primary" />
           <span className="font-display font-bold text-lg md:text-xl text-foreground">
-            Curoxyl<span className="text-gradient"> Global Health</span>
+            Curoxyl<span className="text-gradient"> Health</span>
           </span>
         </Link>
 
