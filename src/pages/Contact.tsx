@@ -9,12 +9,47 @@ import { useToast } from "@/hooks/use-toast";
 const Contact = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handleSubmit = (e: React.FormEvent) => {
+  
+  // --- UPDATED SUBMIT LOGIC ---
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message Sent", description: "Thank you for reaching out. We'll get back to you soon!" });
-    setForm({ name: "", email: "", message: "" });
+
+    // Data package for Web3Forms
+    const formData = {
+      ...form,
+      access_key: "e9e2bc96-b6b8-484f-b1ce-ac953207b7c9", // Your key from the screenshot
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({ 
+          title: "Message Sent", 
+          description: "Thank you for reaching out. We'll get back to you soon!" 
+        });
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
+  // -----------------------------
 
   return (
     <Layout>
@@ -87,5 +122,6 @@ const Contact = () => {
     </Layout>
   );
 };
+
 
 export default Contact;
