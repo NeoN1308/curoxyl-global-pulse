@@ -43,11 +43,11 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-semibold mb-4 text-sm uppercase tracking-wider opacity-60">Contact</h4>
           <div className="flex flex-col gap-3 text-sm opacity-70">
-            <a href="mailto:info@curoxyl.com" className="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <Mail className="h-4 w-4" /> info@curoxyl.com
+            <a href="mailto:curoxylglobalhealthcorp@gmail.com" className="flex items-center gap-2 hover:opacity-100 transition-opacity">
+              <Mail className="h-4 w-4" /> curoxylglobalhealthcorp@gmail.com
             </a>
-            <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-2 hover:opacity-100 transition-opacity">
-              <Phone className="h-4 w-4" /> +91 XXXXX XXXXX
+            <a href="tel:+918618381858" className="flex items-center gap-2 hover:opacity-100 transition-opacity">
+              <Phone className="h-4 w-4" /> +918618381858
             </a>
             <div className="flex items-center gap-3 mt-2">
               <a href="#" aria-label="LinkedIn" className="hover:opacity-100 transition-opacity"><Linkedin className="h-5 w-5" /></a>
