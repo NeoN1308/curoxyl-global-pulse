@@ -1,32 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Package, Truck, MapPin, CheckCircle2, Clock } from "lucide-react";
-
-type Status = "Processing" | "Shipped" | "In Transit" | "Delivered";
-
-const statusSteps: { status: Status; icon: typeof Clock; label: string }[] = [
-  { status: "Processing", icon: Clock, label: "Processing" },
-  { status: "Shipped", icon: Package, label: "Shipped" },
-  { status: "In Transit", icon: Truck, label: "In Transit" },
-  { status: "Delivered", icon: CheckCircle2, label: "Delivered" },
-];
+import { useToast } from "@/hooks/use-toast";
 
 const TrackOrder = () => {
   const [orderId, setOrderId] = useState("");
   const [email, setEmail] = useState("");
-  const [tracked, setTracked] = useState(false);
-  const [currentStatus] = useState<Status>("In Transit");
+  const navigate = useNavigate(); // Initialize navigate
+  const { toast } = useToast();
 
   const handleTrack = (e: React.FormEvent) => {
-  e.preventDefault();
-  if (orderId.trim() && email.trim()) {
-    window.open(`/order-status?orderid=${encodeURIComponent(orderId.trim())}`, "_blank");
-  }
-};
-
-  const statusIndex = statusSteps.findIndex((s) => s.status === currentStatus);
+    e.preventDefault();
+    
+    if (orderId.trim() && email.trim()) {
+      // Navigate to the status page and pass BOTH parameters
+      // We use .trim() to prevent spaces from breaking the search
+      navigate(`/order-status?orderid=${encodeURIComponent(orderId.trim())}&email=${encodeURIComponent(email.trim())}`);
+    } else {
+      toast({
+        title: "Missing Information",
+        description: "Please enter both your Order ID and Email.",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <Layout>
@@ -44,45 +43,33 @@ const TrackOrder = () => {
           <form onSubmit={handleTrack} className="bg-card rounded-xl p-8 card-elevated space-y-5">
             <div>
               <label htmlFor="orderId" className="block text-sm font-medium text-foreground mb-1.5">Order ID</label>
-              <Input id="orderId" placeholder="e.g. CXL-2026-001234" value={orderId} onChange={(e) => setOrderId(e.target.value)} required />
+              <Input 
+                id="orderId" 
+                placeholder="e.g. DQDL" 
+                value={orderId} 
+                onChange={(e) => setOrderId(e.target.value)} 
+                required 
+              />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">Email Address</label>
-              <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="you@example.com" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                required 
+              />
             </div>
             <Button type="submit" className="w-full gradient-primary text-primary-foreground border-0">
               Track Order
             </Button>
           </form>
 
-          {tracked && (
-            <div className="mt-10 bg-card rounded-xl p-8 card-elevated animate-fade-in-up">
-              <h3 className="font-display text-xl font-semibold text-foreground mb-6 text-center">Order Status</h3>
-              <div className="flex items-center justify-between relative">
-                {/* Progress line */}
-                <div className="absolute top-6 left-6 right-6 h-0.5 bg-border" />
-                <div
-                  className="absolute top-6 left-6 h-0.5 bg-green-500 transition-all duration-500"
-                  style={{ width: `${(statusIndex / (statusSteps.length - 1)) * 100}%`, maxWidth: "calc(100% - 48px)" }}
-                />
-
-                {statusSteps.map((step, i) => {
-                  const isActive = i <= statusIndex;
-                  return (
-                    <div key={step.status} className="relative z-10 flex flex-col items-center gap-2">
-                      <div className={`h-12 w-12 rounded-full flex items-center justify-center transition-colors ${isActive ? "bg-green-500" : "bg-muted"}`}>
-                        <step.icon className={`h-5 w-5 ${isActive ? "text-primary-foreground" : "text-muted-foreground"}`} />
-                      </div>
-                      <span className={`text-xs font-medium ${isActive ? "text-foreground" : "text-muted-foreground"}`}>{step.label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-              <p className="text-center text-muted-foreground text-sm mt-8">
-                Order <strong className="text-foreground">{orderId}</strong> is currently <strong className="text-primary">{currentStatus}</strong>.
-              </p>
-            </div>
-          )}
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Can't find your Order ID? Check your confirmation email or contact support.
+          </p>
         </div>
       </section>
     </Layout>
