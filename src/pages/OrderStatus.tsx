@@ -140,7 +140,7 @@ const OrderStatus = () => {
                   <CardTitle className="font-display text-xl">Delivery Progress</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <Progress value={progressPercent} className="h-2 [&>div]:bg-green-500" />
+                  <Progress value={progressPercent} className="h-2 bg-muted rounded-full overflow-hidden [&>div]:bg-green-500" />
                   <div className="flex items-center justify-between">
                     {statusSteps.map((step, i) => {
                       const isActive = i <= statusIndex;
