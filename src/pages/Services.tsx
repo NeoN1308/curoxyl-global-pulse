@@ -4,7 +4,7 @@ import { Brain, Monitor, Stethoscope, Cpu, Truck, Thermometer, FileCheck, Globe,
 const sections = [
   {
     title: "Medical Innovation",
-    desc: "Transforming healthcare by turning scientific breakthroughs into practical solutions that improve diagnosis, treatment, and patient outcomes.",
+    desc: "Transforming healthcare by turning scientific breakthroughs into practical solutions.",
     color: "gradient-primary",
     items: [
       { icon: Brain, label: "AI-powered diagnostics" },
