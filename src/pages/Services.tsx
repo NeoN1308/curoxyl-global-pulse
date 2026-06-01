@@ -7,8 +7,6 @@ const sections = [
     desc: "Transforming healthcare by turning scientific breakthroughs into practical solutions.",
     color: "gradient-primary",
     items: [
-      { icon: Brain, label: "AI-powered diagnostics" },
-      { icon: Monitor, label: "Healthcare monitoring devices" },
       { icon: Stethoscope, label: "Clinical decision support systems" },
       { icon: Cpu, label: "Digital health technologies" },
     ],
