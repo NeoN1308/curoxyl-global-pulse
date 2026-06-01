@@ -7,8 +7,6 @@ const sections = [
     desc: "Transforming healthcare by turning scientific breakthroughs into practical solutions.",
     color: "gradient-primary",
     items: [
-
-      
       { icon: Stethoscope, label: "Clinical decision support systems" },
       { icon: Cpu, label: "Digital health technologies" },
     ],
@@ -66,7 +64,8 @@ const Services = () => (
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">{section.title}</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">{section.desc}</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {/* Added 'justify-center' to the grid classes below to align rows with less than 4 items */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto justify-center">
             {section.items.map((item) => (
               <div key={item.label} className="bg-card rounded-xl p-6 card-elevated text-center">
                 <div className="h-12 w-12 rounded-lg bg-accent flex items-center justify-center mx-auto mb-4">
